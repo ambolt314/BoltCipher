@@ -20,9 +20,12 @@ public class BoltCipher {
      */
     public static String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.?#,;:\\w\\n\\r\\t";
     public static ArrayList<Character> dictionary = new ArrayList<>();
+    
+    public static Integer privateKey = 111111111; // insert huge prime here.
 
     public static void main(String[] args) {
 
+        // Populates dictionary
         for (char c : characters.toCharArray()) {
             dictionary.add(c);
         }
