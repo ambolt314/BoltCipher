@@ -6,8 +6,8 @@
 package boltcipher;
 
 import static boltcipher.BoltCipher.dictionary;
+import static boltcipher.BoltCipher.privateKey;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * The encryption algorithm of the Bolt Cipher is detailed below:
@@ -22,8 +22,9 @@ import java.util.HashMap;
  * 
  * @author Andrew
  */
-public class Encrypt {
+public class Encrypt implements Convert {
 
+    @Override
     public char character(char c) {
 
         int plainValue = 0;
@@ -36,11 +37,14 @@ public class Encrypt {
         for (int i = 0; i < split.size(); i++) {
             cipherValue += Math.pow(2, split.get(i));
         }
+        
+        cipherValue += Math.pow(2, privateKey);
 
         return dictionary.get(cipherValue % dictionary.size());
 
     }
 
+    @Override
     public String word(String word) {
         char[] plainValue = word.toCharArray();
 
@@ -52,5 +56,4 @@ public class Encrypt {
 
         return cipherValue.toString();
     }
-
 }

@@ -21,7 +21,7 @@ public class BoltCipher {
     public static String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.?#,;:\\w\\n\\r\\t";
     public static ArrayList<Character> dictionary = new ArrayList<>();
     
-    public static Integer privateKey = 111111111; // insert huge prime here.
+    public static Integer privateKey; // massive prime number.
 
     public static void main(String[] args) {
 
@@ -32,6 +32,14 @@ public class BoltCipher {
 
         System.out.println("Please enter a word: ");
         String input = new Scanner(System.in).nextLine();
+        
+        System.out.println("Please enter a large prime: ");
+        try {
+        privateKey = Integer.valueOf(new Scanner(System.in).nextLine());
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Private key is not valid.");
+        }
 
         System.out.println("You entered: " + input);
 
